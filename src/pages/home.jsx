@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { createChart } from 'lightweight-charts';
-
+import saile from "../Data/ESH24-CME.scid_BarData.json"
 function Home() {
     const chartitems = useRef();
     const [finalDate, setFinalDate] = useState([]);
@@ -13,9 +13,10 @@ function Home() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = await fetch('./src/Data/ESH24-CME.scid_BarData.json');
-                const respons = await res.json();
-                formatData(respons);
+             
+              const st = JSON.parse(JSON.stringify(saile));
+                
+                formatData(st);
             } catch (error) {
                 console.error("Error fetching data:", error);
             }
